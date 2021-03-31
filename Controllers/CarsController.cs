@@ -30,5 +30,14 @@ namespace FirstApp.Controllers
 
             return View(data);
         }
+
+        public ActionResult GetById(int id)
+        {
+            var car = _carsService.GetAll().FirstOrDefault(x => x.Id == id);
+
+            var carVM = _mapper.Map<CarViewModel>(car);
+
+            return View(carVM);
+        }
     }
 }
