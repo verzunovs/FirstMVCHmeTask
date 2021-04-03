@@ -3,10 +3,22 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TestMigration : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Cars",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        UserId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
+                .Index(t => t.UserId);
+            
             CreateTable(
                 "dbo.AspNetUsers",
                 c => new
@@ -75,9 +87,6 @@
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
-            AddColumn("dbo.Cars", "UserId", c => c.String(maxLength: 128));
-            CreateIndex("dbo.Cars", "UserId");
-            AddForeignKey("dbo.Cars", "UserId", "dbo.AspNetUsers", "Id");
         }
         
         public override void Down()
@@ -94,12 +103,12 @@
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.Cars", new[] { "UserId" });
-            DropColumn("dbo.Cars", "UserId");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Cars");
         }
     }
 }

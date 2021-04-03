@@ -14,5 +14,8 @@ namespace Cars.Data.Models
 
         public string UserId { get; set; }
         public IdentityUser User { get; set; }
+
+        public int ShopId { get; set; }
+        public Shop Shop { get; set; }
     }
 }

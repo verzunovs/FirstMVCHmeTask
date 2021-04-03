@@ -21,6 +21,8 @@ namespace FirstApp.App_Start
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterType<CarsService>().As<ICarsService>();
             builder.RegisterType<CarsRepository>().As<ICarRepository>();
+            builder.RegisterType<ShopService>().As<IShopService>();
+            builder.RegisterType<ShopRepository>().As<IShopRepository>();
             builder.RegisterModule<AutoMapperModule>();
 
             var container = builder.Build();

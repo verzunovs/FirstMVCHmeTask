@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Cars.Data.CarsContext";
         }
 
         protected override void Seed(Cars.Data.CarsContext context)

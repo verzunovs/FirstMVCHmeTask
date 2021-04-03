@@ -18,9 +18,14 @@ namespace FirstApp.Controllers
             _carsService = carsService;
             _mapper = mapper;
         }
-        public ActionResult Index()
+        public ActionResult Index(PaggingViewModel model)
         {
             var cars = _carsService.GetAll();
+            if (model.Page.HasValue && model.PageSize.HasValue)
+                cars = cars.Skip(model.PageSize.Value * (model.Page.Value - 1)).ToList();
+
+            if (model.PageSize.HasValue)
+                cars = cars.Take(model.PageSize.Value).ToList();
 
             var carsVm = _mapper.Map<List<CarViewModel>>(cars);
             var data = new GetCarViewModel
@@ -31,6 +36,7 @@ namespace FirstApp.Controllers
             return View(data);
         }
 
+        [Route("{id}")]
         public ActionResult GetById(int id)
         {
             var car = _carsService.GetAll().FirstOrDefault(x => x.Id == id);

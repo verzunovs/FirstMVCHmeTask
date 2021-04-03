@@ -18,6 +18,8 @@ namespace FirstApp.App_Start
             {
                 cfg.CreateMap<CarModel, CarViewModel>().ReverseMap();
                 cfg.CreateMap<Car, CarModel > ().ReverseMap();
+                cfg.CreateMap<ShopPostModel, ShopModel>().ReverseMap();
+                cfg.CreateMap<ShopModel, Shop>().ReverseMap();
             }
             ));
 

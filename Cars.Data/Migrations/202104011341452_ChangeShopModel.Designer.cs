@@ -7,13 +7,13 @@ namespace Cars.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class InitialCreate1 : IMigrationMetadata
+    public sealed partial class ChangeShopModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeShopModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103281548501_InitialCreate1"; }
+            get { return "202104011341452_ChangeShopModel"; }
         }
         
         string IMigrationMetadata.Source

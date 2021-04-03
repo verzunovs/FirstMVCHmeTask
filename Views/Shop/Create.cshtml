@@ -1,0 +1,21 @@
+﻿@model FirstApp.Models.ShopPostModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Shop", FormMethod.Post))
+{
+    <h1>HELLO ! YOU ARE ON A CREATE SHOP PAGE</h1>
+    <br />
+    @Html.LabelFor(x => x.City)
+    @Html.TextBoxFor(x => x.City)
+    <br />
+    @Html.LabelFor(x => x.Adress)
+    @Html.TextBoxFor(x => x.Adress)
+    <br />
+    @Html.LabelFor(x=>x.Manager)
+    @Html.TextBoxFor(x => x.Manager)
+    <input type="submit" value="Отправить" />
+}
